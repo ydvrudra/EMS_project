@@ -1,0 +1,86 @@
+import React from "react";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { showToastError } from "../../../utils/showToastError";
+
+
+const AddDepartment = () => {
+
+    const [department, setDepartment] = useState({
+        dep_name: "",
+        description: ""
+    });
+   
+    const [loading, setLoading] = useState(false);
+    const Navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setDepartment({ ...department, [name]: value });
+    }
+    
+
+const handleSubmit = async(e) => {
+    e.preventDefault();
+    setLoading(true);
+    //console.log('dep',department);
+    try { 
+         await new Promise((resolve) => setTimeout(resolve, 2000));
+        const res = await axios.post("http://localhost:5000/api/department/add-department", department, {
+          headers: {
+             Authorization: `Bearer ${localStorage.getItem("token")}`
+           }
+          });
+        if (res.data.success) {
+            toast.success("Department added successfully");
+            Navigate("/admin-dashboard/departments");
+            console.log("res", res.data);
+        } 
+        
+    } catch (error) {
+       showToastError(error)  
+    }
+    finally {
+        setLoading(false);
+    }
+}
+
+  return (
+    <div>
+      <div className="max-w-3xl mx-auto p-8 bg-white rounded shadow-md mt-10 w-96 ">
+        <h2 className="text-2xl font-bold mb-6">Add New Department</h2>
+            <form onSubmit={handleSubmit} action="">
+                <div className="">
+                    <label htmlFor="dep_name" className="block text-gray-700">Department Name</label>
+                    <input type="text"
+                           name="dep_name"
+                           onChange={handleChange}
+                           value={department.dep_name}
+                           placeholder="Enter department name"
+                           required
+                           className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"/>
+                </div>
+                <div className="mt-4">
+                    <label htmlFor="description" className="block  text-gray-700">Description</label>
+                    <textarea 
+                           name="description" 
+                           placeholder="description" 
+                           onChange={handleChange}
+                            value={department.description}
+                           className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    ></textarea>
+                </div>
+                <div className="mt-4">
+                    <button
+                     type="submit"
+                      disabled={loading} 
+                     className={`w-full ${loading ? "bg-teal-600 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-800"} px-4 py-2 text-white rounded transition`}>{loading ? "Adding..." : "Add Department"}</button>
+                </div>
+            </form>
+      </div>
+    </div>
+  );
+}   
+export default AddDepartment;

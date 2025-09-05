@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Ensure the table scrolls horizontally on smaller screens */
+.table-responsive {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for touch devices */
+}
+
+
