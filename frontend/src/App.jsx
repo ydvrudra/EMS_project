@@ -14,6 +14,10 @@ import AddDepartment from './pages/admin/department/AddDepartment';
 import EditDepartment from './pages/admin/department/EditDepartment';
 import EmployeeList from './pages/admin/employee/EmployeeList';
 import AddEmployee from './pages/admin/employee/AddEmployee';
+import EditEmployee from './pages/admin/employee/Editemployee';
+import ViewEmployee from './pages/admin/employee/ViewEmployee';
+import AddSalary from './pages/admin/salary/AddSalary';
+import ViewSalary from './pages/admin/salary/ViewSalary';
 
 
 
@@ -43,6 +47,12 @@ function App() {
          {/* employee Routes */}
          <Route path = '/admin-dashboard/employees' element = {<EmployeeList/>} /> 
          <Route path = '/admin-dashboard/add-employee' element = {<AddEmployee/>} />
+         <Route path='/admin-dashboard/employees/:id' element={<ViewEmployee/>}/>
+         <Route path='/admin-dashboard/employee/edit/:id' element={<EditEmployee/>}/>
+
+         {/* salary Routes */}
+         <Route path = '/admin-dashboard/salary/add-salary' element = {<AddSalary/>} />
+         <Route path = '/admin-dashboard/employees/salary/:id' element = {<ViewSalary/>} />
           </Route>
 
       <Route path='/employee-dashboard'  element = { <EmployeeDashboard/> }/>

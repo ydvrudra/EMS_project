@@ -57,9 +57,7 @@ const EditDepartment = () => {
 
                 }
             } catch (error) {
-                console.log("error", error);
-                const message = error.response?.data?.message || "Something went wrong";
-                toast.error(message);
+                showToastError(error) 
             }
             finally {
                 setDeptLoading(false);
@@ -68,7 +66,8 @@ const EditDepartment = () => {
         getDepartmentbyId();
 
     },[]);
-    return (
+
+    return ( 
           <div>
       <div className="max-w-3xl mx-auto p-8 bg-white rounded shadow-md mt-10 w-96 ">
         <h2 className="text-2xl font-bold mb-6">Edit Department</h2>

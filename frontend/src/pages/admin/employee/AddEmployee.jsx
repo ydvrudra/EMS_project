@@ -32,7 +32,7 @@ function AddEmployee() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setLoading(true)
-     console.log("Form Data Before Submit:", formData);
+     //console.log("Form Data Before Submit:", formData);
     const formDataObj = new FormData();
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key])
@@ -68,6 +68,7 @@ function AddEmployee() {
       getAllDept();
     },[]);
 
+    
   return (
     <>
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">

@@ -29,6 +29,7 @@ const AdminSidebar = () => {
 
                 <NavLink to='/admin-dashboard/departments'
                className={({isActive}) => `${isActive ? "bg-teal-600" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`}
+               end
                 >
                 <FaBuilding />
                 <span className="">Departments</span>
@@ -40,8 +41,10 @@ const AdminSidebar = () => {
                 <span className="">Leaves</span>
                 </NavLink>
 
-                <NavLink to='/admin-dashboard'
-                className={`flex items-center space-x-4 py-2.5 px-4 rounded`}>
+                <NavLink to='/admin-dashboard/salary/add-salary'
+                className={({isActive}) => `${isActive ? "bg-teal-600" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`}
+                end
+                >
                 <FaMoneyBillWaveAlt  />
                 <span className="">Salary</span>
                 </NavLink>

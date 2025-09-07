@@ -5,8 +5,9 @@ import { columns, DepartmentButtons } from "./DeptHelper";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
+import Loader from "../../../components/Loader";
 
 
 const DepartmentList = () => {
@@ -59,6 +60,10 @@ const DepartmentList = () => {
         };
         fetchDepartments();
     },[]);
+
+    if (deptLoading) {
+    return <Loader />;
+  }
 
 
   return (

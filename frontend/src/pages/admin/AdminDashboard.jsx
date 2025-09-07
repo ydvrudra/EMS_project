@@ -3,6 +3,7 @@ import { useAuth } from "../../context/authContext";
 import { useEffect } from "react";
 import AdminSidebar from "./AdminSidebar";
 import AdminNavbar from "./AdminNavbar";
+import Loader from "../../components/Loader";
 //import AdminSummary from "./AdminSummary";
 
 
@@ -20,9 +21,9 @@ const AdminDashboard = () => {
   }, [loading, user, Navigate]);
 
 
-    if(loading){
-        return <div>Loading...</div>;
-    }
+   if (loading) {
+    return <Loader />;
+  }
 
     if(!user){
         Navigate("/login");

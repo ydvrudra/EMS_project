@@ -40,6 +40,8 @@ const handleSubmit = async(e) => {
         } 
         
     } catch (error) {
+        console.log("Error object:", error);
+  console.log("Error response data:", error.response?.data);
        showToastError(error)  
     }
     finally {
@@ -47,7 +49,7 @@ const handleSubmit = async(e) => {
     }
 }
 
-  return (
+  return ( 
     <div>
       <div className="max-w-3xl mx-auto p-8 bg-white rounded shadow-md mt-10 w-96 ">
         <h2 className="text-2xl font-bold mb-6">Add New Department</h2>
@@ -59,7 +61,7 @@ const handleSubmit = async(e) => {
                            onChange={handleChange}
                            value={department.dep_name}
                            placeholder="Enter department name"
-                           required
+                           
                            className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"/>
                 </div>
                 <div className="mt-4">
@@ -81,6 +83,7 @@ const handleSubmit = async(e) => {
             </form>
       </div>
     </div>
+  
   );
 }   
 export default AddDepartment;
