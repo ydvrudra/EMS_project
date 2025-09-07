@@ -84,9 +84,11 @@ export const getEmployees = async (req, res) => {
 export const getEmployeebyId = async (req, res) => {
     const {id} = req.params;
     try {
-        const employee = await Employee.findById({_id:id}).populate('userId',{password:0 }).populate('department');
+       let employee;
+         employee = await Employee.findById({_id:id}).populate('userId',{password:0 }).populate('department');
+
         if (!employee){
-            return handleError(res, new Error("Employee not found"), 400);
+            employee = await Employee.findOne({userId:id}).populate('userId',{password:0 }).populate('department');
         }
         return res.status(201).json({ success: true, employee });
 
