@@ -41,7 +41,7 @@ const EMpSidebar = () => {
                 </NavLink>
 
                 {/* salary */}
-                <NavLink to='/employee-dashboard/salary'
+                <NavLink to={`/employee-dashboard/salary/${user._id}`}
                 className={({isActive}) => `${isActive ? "bg-teal-600" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`}
                 end
                 >

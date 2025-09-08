@@ -25,6 +25,8 @@ import EmpDashboard from './pages/employ/EmplDashboard';
 import EmpSummary from './pages/employ/EmpSummary';
 import ViewEmpProfile from './pages/employ/VIewEmpProfile';
 import EmpLeavesList from './pages/employ/leaves/EmpLeavesList';
+import AddEmpLeave from './pages/employ/leaves/AddEmpLeave';
+import ViewEmpSalary from './pages/employ/salary/ViewEmpSalary';
 
 
 
@@ -75,9 +77,14 @@ function App() {
         </PrivateRoutes>
          }>
          <Route index element={<EmpSummary/>}></Route>
-         <Route path='/employee-dashboard/profile/:id' element = { <ViewEmpProfile/>}/> 
+         <Route path='/employee-dashboard/profile/:id' element = { <ViewEmpProfile/>}/>
+          
+         {/* emp leaves routes */}
          <Route path='/employee-dashboard/leaves' element = { <EmpLeavesList/>}/> 
+         <Route path='/employee-dashboard/add-leave' element = { <AddEmpLeave/>}/> 
 
+         {/* emp salary route */}
+         <Route path='/employee-dashboard/salary/:id' element = { <ViewEmpSalary/>}/> 
          </Route>
     </Routes>
    </Router>

@@ -67,7 +67,7 @@ const filterSalary = (q) => {
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs uppercase text-gray-700 bg-gray-50 border border-gray-200">
                         <tr>
-                            <th className="px-6 py-3">SSNO</th>
+                            <th className="px-6 py-3">SNO</th>
                              <th className="px-6 py-3">EMP ID</th>
                               <th className="px-6 py-3">SALARY</th>
                                <th className="px-6 py-3">ALLOWANCE</th>
