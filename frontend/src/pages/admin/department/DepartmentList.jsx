@@ -8,6 +8,7 @@ import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import MetaData from "../../../components/MetaData";
 
 
 const DepartmentList = () => {
@@ -67,6 +68,8 @@ const DepartmentList = () => {
 
 
   return (
+    <>
+    <MetaData title= "Department List"/>
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Departments</h3>
@@ -89,6 +92,7 @@ const DepartmentList = () => {
         />
       </div>
     </div>
+    </>
   );
 }   
 export default DepartmentList;

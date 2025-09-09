@@ -4,6 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { showToastError } from '../../../utils/showToastError';
+import MetaData from '../../../components/MetaData';
 
 
 
@@ -71,6 +72,7 @@ function AddEmployee() {
     
   return (
     <>
+    <MetaData title="Add Employee"/> 
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add new Employee</h2>
       <form onSubmit={handleSubmit} action="" className="">

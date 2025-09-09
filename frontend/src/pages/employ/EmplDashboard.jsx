@@ -4,6 +4,7 @@ import { useAuth } from "../../context/authContext";
 import EMpNavbar from "./EmpNavbar";
 import EMpSidebar from "./EmpSidebar";
 import Loader from "../../components/Loader";
+import MetaData from "../../components/MetaData";
 
 const EmpDashboard = () => {
   const { user, loading } = useAuth();
@@ -21,6 +22,7 @@ const EmpDashboard = () => {
 
   return (
     <div>
+        <MetaData title={user.name}/>
         <div className="flex">
             <EMpSidebar/>
             <div className="flex-1 ml-64 bg-gray-100 h-screen">

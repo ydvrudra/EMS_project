@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AdminSidebar from "./AdminSidebar";
 import AdminNavbar from "./AdminNavbar";
 import Loader from "../../components/Loader";
+import MetaData from "../../components/MetaData";
 //import AdminSummary from "./AdminSummary";
 
 
@@ -32,6 +33,7 @@ const AdminDashboard = () => {
 
     return(
         <>
+        <MetaData title={user.name}/>
         <div className="flex">
             <AdminSidebar/>
             <div className="flex-1 ml-64 bg-gray-100 h-screen">

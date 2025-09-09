@@ -8,6 +8,7 @@ import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import MetaData from "../../../components/MetaData";
 
 const EmployeeList = () => {
 
@@ -71,6 +72,7 @@ const EmployeeList = () => {
 
     return(
         <>
+        <MetaData title = "Employee List"/>
         <div className="p-5">
           <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Employee</h3>

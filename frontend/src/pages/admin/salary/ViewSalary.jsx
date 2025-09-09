@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import MetaData from "../../../components/MetaData";
 //import Loader from "../../../components/Loader";
 
 const ViewSalary = () => {
@@ -47,6 +48,7 @@ const filterSalary = (q) => {
 
   return (
     <>
+    <MetaData title={`Salary History`}/>
     {filteredSalaries === null ? (
         <Loader/>
     ) : (

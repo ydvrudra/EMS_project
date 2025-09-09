@@ -4,6 +4,7 @@ import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import MetaData from "../../../components/MetaData";
 
 const ViewEmployee = () => {
 
@@ -34,7 +35,9 @@ const ViewEmployee = () => {
 
     },[]);
     return(
-        <>{employee ? (
+        <>
+       <MetaData title= "Employee Details" />
+        {employee ? (
         <div className="max-w-3xl mx-auto mt-10 bg-gray-100 p-10 rounded shadow-lg">
             <h2 className="text-2xl font-bold mb-8 text-center">
                 Employee Details

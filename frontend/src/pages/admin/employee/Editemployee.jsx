@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { showToastError } from '../../../utils/showToastError';
 import Loader from '../../../components/Loader';
+import MetaData from '../../../components/MetaData';
 
 
 
@@ -115,7 +116,9 @@ function EditEmployee() {
     
 
   return (
-    <>{ departments && employee ? (
+    <>
+   <MetaData title={employee.name ? `Edit: ${employee.name}` : 'Edit Employee'} />
+    { departments && employee ? (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Edit Employee</h2>
       <form onSubmit={handleSubmit} action="" className="">

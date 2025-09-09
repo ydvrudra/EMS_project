@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
+import MetaData from "../../../components/MetaData";
 
 
 
@@ -69,6 +70,7 @@ const EditDepartment = () => {
 
     return ( 
           <div>
+            <MetaData title= "Edit Department"/>
       <div className="max-w-3xl mx-auto p-8 bg-white rounded shadow-md mt-10 w-96 ">
         <h2 className="text-2xl font-bold mb-6">Edit Department</h2>
             <form onSubmit={handleSubmit} action="">

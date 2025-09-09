@@ -11,7 +11,7 @@ const EMpSidebar = () => {
         <>
         <div className="bg-gray-800 text-white w-64 h-screen fixed left-0 top-0 bottom-0 space-y-2">
             <div className="bg-teal-600 h-12 flex items-center justify-center">
-                <h3 className="text-2xl text-center font-great">Employee Rudra</h3>
+                <h3 className="text-2xl text-center font-great">{user.name}</h3>
             </div>
             <div className="px-4">
 
