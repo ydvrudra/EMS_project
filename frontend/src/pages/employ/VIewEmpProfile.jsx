@@ -35,7 +35,7 @@ const ViewEmpProfile = () => {
     },[]);
     return(
         <>{employee ? (
-        <div className="max-w-3xl mx-auto mt-10 bg-gray-100 p-10 rounded shadow-lg">
+        <div className="max-w-3xl mx-auto mt-10 bg-gray-100 p-10 rounded shadow-lg w-96 sm:w-full">
             <h2 className="text-2xl font-bold mb-8 text-center">
                 Employee Details
             </h2>

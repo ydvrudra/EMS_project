@@ -1,5 +1,6 @@
 import { handleError } from "../middleware/errorHandler.js"
 import Salary from "../models/Salary.js";
+import Employee from '../models/Employee.js';
 
 
 
@@ -33,9 +34,17 @@ export const AddSalary = async (req, res) => {
 export const getSalaryById = async (req, res) => {
     const {id} = req.params;
     try {
-        const salary = await Salary.find({employeeId:id}).populate('employeeId','employeeId');
-        if (!salary){
-            return handleError(res, new Error("salary not found"), 400);
+        let salary;
+            salary = await Salary.find({employeeId:id}).populate('employeeId');
+        if (!salary || salary.length === 0){
+            const employee = await Employee.findOne({userId:id})
+             if (employee) {
+                salary = await Salary.find({ employeeId: employee._id }).populate('employeeId');
+            }
+        }
+
+         if (!salary || salary.length === 0) {
+            return res.status(404).json({ success: false, message: 'Salary not found' });
         }
 
         return res.status(201).json({ success: true, salary });

@@ -73,7 +73,7 @@ const EmployeeList = () => {
     return(
         <>
         <MetaData title = "Employee List"/>
-        <div className="p-5">
+        <div className="p-5 mx-auto w-96 sm:w-full">
           <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Employee</h3>
       </div>
@@ -83,7 +83,7 @@ const EmployeeList = () => {
              onChange={handleFilter}
              placeholder="Search by Emp.name" 
              className="px-4 py-1 bg-white shadow border" />
-        <Link to="/admin-dashboard/add-employee" className="px-4 py-1 bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
+        <Link to="/admin-dashboard/add-employee" className="px-4 py-1 text-[8px] sm:text-xl bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
         </Link>
          </div>
 

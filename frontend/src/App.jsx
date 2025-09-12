@@ -27,6 +27,9 @@ import ViewEmpProfile from './pages/employ/VIewEmpProfile';
 import EmpLeavesList from './pages/employ/leaves/EmpLeavesList';
 import AddEmpLeave from './pages/employ/leaves/AddEmpLeave';
 import ViewEmpSalary from './pages/employ/salary/ViewEmpSalary';
+import Setting from './pages/employ/settings/Setting';
+import AllEmpLeavesList from './pages/admin/leaves/AllEmpLeavesList';
+import LeaveDetail from './pages/admin/leaves/LeaveDetail';
 
 
 
@@ -41,6 +44,7 @@ function App() {
       <Route path='/register' element = {<Register/>}/>
       <Route path='/login' element = {<Login/>}/>
 
+      {/* admin dashboard route for only admin acess */}
       <Route path='/admin-dashboard'  element = {
         <PrivateRoutes>
           <RolebasedRoutes RequiredRole={["admin"]}>
@@ -50,25 +54,29 @@ function App() {
           }>
         <Route index element={<AdminSummary/>}></Route>
 
-        {/* departments admin Routes */}
+        {/* departments admin Routes for admin */}
          <Route path='/admin-dashboard/departments' element={<DepartmentList/>}/>
          <Route path='/admin-dashboard/add-department' element={<AddDepartment/>}/>
          <Route path='/admin-dashboard/department/:id' element={<EditDepartment/>}/>
 
-         {/* employee admin Routes */}
+         {/* employee admin Routes for admin */}
          <Route path = '/admin-dashboard/employees' element = {<EmployeeList/>} /> 
          <Route path = '/admin-dashboard/add-employee' element = {<AddEmployee/>} />
          <Route path='/admin-dashboard/employees/:id' element={<ViewEmployee/>}/>
          <Route path='/admin-dashboard/employee/edit/:id' element={<EditEmployee/>}/>
 
-         {/* salary admin Routes */}
+         {/* salary admin Routes for admin */}
          <Route path = '/admin-dashboard/salary/add-salary' element = {<AddSalary/>} />
          <Route path = '/admin-dashboard/employees/salary/:id' element = {<ViewSalary/>} />
+
+         {/* emp leaves list show admin only */}
+         <Route path = '/admin-dashboard/leaves' element = {<AllEmpLeavesList/>} />
+         <Route path = '/admin-dashboard/leaves/:id' element = {<LeaveDetail/>} />
           </Route>
 
+{/* ____________________________________________________________________________________________________ */}
 
-
-      {/* emp routes */}
+      {/* emp routes ony employee access*/}
       <Route path='/employee-dashboard'  element = { 
         <PrivateRoutes>
           <RolebasedRoutes RequiredRole={["admin", "employee"]}>
@@ -85,6 +93,9 @@ function App() {
 
          {/* emp salary route */}
          <Route path='/employee-dashboard/salary/:id' element = { <ViewEmpSalary/>}/> 
+
+         {/* emp setting route */}
+          <Route path='/employee-dashboard/setting' element = { <Setting/>}/> 
          </Route>
     </Routes>
    </Router>

@@ -70,7 +70,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center relative bg-white px-4">
+    <div className="min-h-screen flex flex-col  justify-center items-center relative bg-white px-4">
       {/* Top Half Background */}
       <div className="absolute top-0 left-0 w-full h-1/2 bg-teal-600 z-0" />
 

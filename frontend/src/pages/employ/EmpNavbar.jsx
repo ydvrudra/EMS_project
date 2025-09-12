@@ -9,7 +9,7 @@ const EMpNavbar = () => {
   if (loading) return <Loader />; 
 
   return (
-    <div className="flex items-center justify-between text-white h-14 bg-teal-600 px-4 shadow-md">
+    <div className="flex items-center justify-between mx-auto w-full text-white h-14 bg-teal-600 px-4 shadow-md">
       {/* Left: Profile + Name */}
       <div className="flex items-center space-x-3">
         {/* Profile Image */}

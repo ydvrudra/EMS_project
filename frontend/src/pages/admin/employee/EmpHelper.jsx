@@ -97,25 +97,6 @@ export const EmployeeButtons = ({ id }) => {
  // console.log("EmployeeButtons received id:", id);
     const Navigate = useNavigate();
 
-    const handleDelete = async (id) => {
-        const confirm = window.confirm("Are you sure you want to delete this EMployee?");
-        if (confirm) {
-         try {
-                const res = await axios.delete(`http://localhost:5000/api/employee/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
-                    }
-                });
-                if (res.data.success) {
-                    toast.success("Employee deleted successfully");
-
-                }
-            } catch (error) {
-               showToastError(error);
-            }
-        }
-    }
-
     return (
         <div className="space-x-2">
             <button 

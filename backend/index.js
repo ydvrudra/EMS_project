@@ -6,6 +6,8 @@ import userRoutes from './routes/userRoutes.js'
 import deptRoutes from './routes/deptRoutes.js';
 import empRoutes from './routes/empRoutes.js';
 import salaryRoutes from './routes/salaryRoutes.js'
+import leaveRoutes from './routes/leaveRoute.js';
+import settingRoutes from './routes/settingRoutes.js'
 //import { handleError } from './middleware/errorHandler.js';
 
 
@@ -22,6 +24,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/department",deptRoutes);
 app.use('/api/employee', empRoutes);
 app.use('/api/salary',salaryRoutes );
+app.use('/api/leave',leaveRoutes );
+app.use('/api/setting', settingRoutes);
 
 
 //mongoDB Connection 
