@@ -14,7 +14,14 @@ import DashboardRoutes from './routes/dashboard.js'
 
 const app = express();
 dotenv.config();
-app.use(cors());
+
+const allowedOrigins = ['https://ems-qic8.onrender.com'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+//app.use(cors());
 app.use(express.json());
 app.use(express.static('public/uploads'))
 //app.use(handleError);
