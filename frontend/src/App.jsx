@@ -99,6 +99,7 @@ function App() {
          {/* emp setting route */}
           <Route path='/employee-dashboard/setting' element = { <Setting/>}/> 
          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
     </Routes>
    </Router>
     <Toaster position="top-center" reverseOrder={false} />
