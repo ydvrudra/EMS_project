@@ -2,9 +2,9 @@ import React, {  useState } from 'react'
 import { useAuth } from '../../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 //import { fetchDepartments } from './EmpHelper';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { showToastError } from '../../../utils/showToastError';
+import axiosInstance from '../../../api/axiosInstance';
 //import Loader from '../../../components/Loader';
 
 
@@ -34,7 +34,7 @@ function AddEmpLeave() {
        // console.log("lev", leave);
             try {   
                  //await new Promise((resolve) => setTimeout(resolve, 2000));     
-                const res = await axios.post(`http://localhost:5000/api/leave/add-leave`, leave, {
+                const res = await axiosInstance.post(`/api/leave/add-leave`, leave, {
                     headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                          }

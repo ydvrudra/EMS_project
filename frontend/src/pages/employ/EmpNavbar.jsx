@@ -15,7 +15,7 @@ const EMpNavbar = () => {
         {/* Profile Image */}
         {user?.profileImage && (
           <img
-            src={`http://localhost:5000/${user.profileImage}`}
+            src={`/${user.profileImage}`}
             alt="Profile"
             className="w-10 h-10 rounded-full object-cover border-2 border-white"
           />

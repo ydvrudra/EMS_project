@@ -28,7 +28,7 @@ const handleSubmit = async(e) => {
     setLoading(true);
     //console.log('dep',department);
     try { 
-         await new Promise((resolve) => setTimeout(resolve, 2000));
+         //await new Promise((resolve) => setTimeout(resolve, 2000));
         const res = await axiosInstance.post("/api/department/add-department", department, {
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`

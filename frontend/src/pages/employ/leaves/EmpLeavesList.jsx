@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect ,useState} from "react";
-import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import { useAuth } from "../../../context/authContext";
+import axiosInstance from "../../../api/axiosInstance";
 
 const EmpLeavesList = () => {
 
@@ -21,7 +21,7 @@ const EmpLeavesList = () => {
                 setLoading(true);
                 try {
                     //  await new Promise((resolve) => setTimeout(resolve, 2000));  
-                    const res = await axios.get(`http://localhost:5000/api/leave/${id}/${user.role}`, {
+                    const res = await axiosInstance.get(`/api/leave/${id}/${user.role}`, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         }

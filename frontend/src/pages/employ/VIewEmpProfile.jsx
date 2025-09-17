@@ -1,9 +1,9 @@
 import React, { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../utils/showToastError";
 import Loader from "../../components/Loader";
+import axiosInstance from "../../api/axiosInstance";
 
 const ViewEmpProfile = () => {
 
@@ -16,7 +16,7 @@ const ViewEmpProfile = () => {
         const getEmployeebyId = async () => {
             try {
                 // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/employee/${id}`, {
+                const res = await axiosInstance.get(`/api/employee/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

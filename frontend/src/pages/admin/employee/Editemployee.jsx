@@ -39,7 +39,7 @@ function EditEmployee() {
     e.preventDefault();
     setLoading(true)
     try { 
-         await new Promise((resolve) => setTimeout(resolve, 2000));
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
 
             const formData = new FormData();
             formData.append("name", employee.name);

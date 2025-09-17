@@ -1,10 +1,10 @@
 import React, { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
 import { useAuth } from "../../../context/authContext";
+import axiosInstance from "../../../api/axiosInstance";
 //import Loader from "../../../components/Loader";
 
 const ViewEMpSalary = () => {
@@ -21,7 +21,7 @@ const ViewEMpSalary = () => {
         const getSalaryById = async () => {
             try {
                 // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/salary/${id}/${user.role}`, {
+                const res = await axiosInstance.get(`/api/salary/${id}/${user.role}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

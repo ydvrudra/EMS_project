@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../../context/authContext";
 import { showToastError } from "../../../utils/showToastError";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 const Setting = () => {
   const { user } = useAuth();
@@ -37,8 +37,8 @@ const Setting = () => {
     setLoading(true);
 
     try {
-      const response = await axios.put(
-        "http://localhost:5000/api/setting/change-password",
+      const response = await axiosInstance.put(
+        "/api/setting/change-password",
         setting,
         {
           headers: {
