@@ -5,9 +5,6 @@ import { AddSalary,getSalaryById } from '../controllers/salaryController.js';
 const router = express.Router();
 
 router.post('/add-salary', authmiddleware, AddSalary);
-//router.get('/', authmiddleware, getEmployees);
-router.get('/:id', authmiddleware, getSalaryById);
-//router.put('/:id', authmiddleware, upload.single('image'), UpdateEmployeebyId);
-//router.get('/department/:id', authmiddleware, fetchEmployeesByDeptId);
+router.get('/:id/:role', authmiddleware, getSalaryById);
 
 export default router;

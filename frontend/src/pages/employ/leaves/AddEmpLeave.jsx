@@ -31,9 +31,9 @@ function AddEmpLeave() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        console.log("lev", leave);
+       // console.log("lev", leave);
             try {   
-                 await new Promise((resolve) => setTimeout(resolve, 2000));     
+                 //await new Promise((resolve) => setTimeout(resolve, 2000));     
                 const res = await axios.post(`http://localhost:5000/api/leave/add-leave`, leave, {
                     headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -41,8 +41,8 @@ function AddEmpLeave() {
                         });
                     if (res.data.success) {
                         toast.success("Leeave Added successfully");
-                        Navigate('/employee-dashboard/leaves')
-                      console.log("added leave", res.data.leave);
+                        Navigate(`/employee-dashboard/leaves/${user._id}`)
+                      //console.log("added leave", res.data.leave);
         
                      }
                     } catch (error) {

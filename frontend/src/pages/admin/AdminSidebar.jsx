@@ -58,8 +58,10 @@ const AdminSidebar = () => {
                 </NavLink>
 
                 {/* setting */}
-                <NavLink to='/admin-dashboard'
-                className={`flex items-center space-x-4 py-2.5 px-4 rounded`}>
+                <NavLink to='/admin-dashboard/setting'
+                className={({isActive}) => `${isActive ? "bg-teal-600" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`}
+                end
+                >
                 <FaCogs />
                 <span className="">Setting</span>
                 </NavLink>

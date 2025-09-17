@@ -72,6 +72,8 @@ function App() {
          {/* emp leaves list show admin only */}
          <Route path = '/admin-dashboard/leaves' element = {<AllEmpLeavesList/>} />
          <Route path = '/admin-dashboard/leaves/:id' element = {<LeaveDetail/>} />
+         <Route path = '/admin-dashboard/employees/leaves/:id' element = {<EmpLeavesList/>} />
+         <Route path='/admin-dashboard/setting' element = { <Setting/>}/>
           </Route>
 
 {/* ____________________________________________________________________________________________________ */}
@@ -88,7 +90,7 @@ function App() {
          <Route path='/employee-dashboard/profile/:id' element = { <ViewEmpProfile/>}/>
           
          {/* emp leaves routes */}
-         <Route path='/employee-dashboard/leaves' element = { <EmpLeavesList/>}/> 
+         <Route path='/employee-dashboard/leaves/:id' element = { <EmpLeavesList/>}/> 
          <Route path='/employee-dashboard/add-leave' element = { <AddEmpLeave/>}/> 
 
          {/* emp salary route */}

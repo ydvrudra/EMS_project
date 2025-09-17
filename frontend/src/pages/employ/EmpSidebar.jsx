@@ -34,7 +34,7 @@ const EMpSidebar = () => {
                 </NavLink>
 
                  {/* leaves */}
-                <NavLink to='/employee-dashboard/leaves'
+                <NavLink to={`/employee-dashboard/leaves/${user._id}`}
                 className={`flex items-center space-x-4 py-2.5 px-4 rounded`}>
                 <FaCalendarAlt  />
                 <span className="">Leaves</span>

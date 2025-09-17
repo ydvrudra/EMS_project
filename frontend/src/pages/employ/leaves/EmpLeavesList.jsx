@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect ,useState} from "react";
 import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
@@ -11,15 +11,17 @@ const EmpLeavesList = () => {
      const [leaves, setLeaves] = useState([])
      const [loading, setLoading ] = useState(false);
      //const[filteredLeaves, setFilteredLeaves] = useState([]);
-    
-        const {user} = useAuth();
-    
+
+    const {user} = useAuth();
+        const {id} = useParams();
+       
             let sno = 1;  
+
             const getLeaveById = async () => {
                 setLoading(true);
                 try {
                     //  await new Promise((resolve) => setTimeout(resolve, 2000));  
-                    const res = await axios.get(`http://localhost:5000/api/leave/${user._id}`, {
+                    const res = await axios.get(`http://localhost:5000/api/leave/${id}/${user.role}`, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         }
@@ -63,8 +65,10 @@ const EmpLeavesList = () => {
              type="text" 
              placeholder="Search by Emp.name" 
              className="px-4 py-1 bg-white shadow border" />
+             {user.role === 'employee' && 
         <Link to="/employee-dashboard/add-leave" className="px-4 py-1 bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Leave
         </Link>
+           }
          </div>
                  
                 <table className="w-full text-sm text-left text-gray-500">

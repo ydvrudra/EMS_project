@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
@@ -11,10 +11,26 @@ const LeaveDetail = () => {
 
     const {id} = useParams();
 
+    const Navigate = useNavigate();
+
+    const changeStatus = async (id, status) => {
+         try {
+                    const res = await axios.put(`http://localhost:5000/api/leave/${id}`,{status}, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    });
+                    if (res.data.success) {
+                        Navigate('/admin-dashboard/leaves');    
+                    }
+                } catch (error) {
+                   showToastError(error) 
+                }
+    }
+
       useEffect(() => {
             const getAllLeaves = async () => {
                 try {
-                    // Fetch department details using the id
                     const res = await axios.get(`http://localhost:5000/api/leave/leave-detail/${id}`, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -84,8 +100,12 @@ const LeaveDetail = () => {
                         </p>
                         {leave.status === "Pending" ? (
                             <div className="flex space-x-2">
-                                <button className="px-2 py-1 text-white bg-teal-600 hover:bg-teal-800">Accept</button>
-                                <button className="px-2 py-1 text-white bg-red-500 hover:bg-red-700">Reject</button>
+                                <button 
+                                onClick={() => changeStatus(leave._id,'Approved')}
+                                className="px-2 py-1 text-white bg-teal-600 hover:bg-teal-800">Approve</button>
+                                <button
+                                onClick={() => changeStatus(leave._id,'Rejected')}
+                                 className="px-2 py-1 text-white bg-red-500 hover:bg-red-700">Reject</button>
                             </div>
                         ) : (
                             <p className="font-medium">{leave.status}</p>

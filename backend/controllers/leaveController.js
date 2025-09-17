@@ -34,12 +34,17 @@ export const AddLeave = async (req, res) => {
 
 export const getLeaveById = async (req, res) => {
     try {
-        const {id} = req.params;
+        const {id, role} = req.params;
 
-        const employee = await Employee.findOne({userId:id})
+        let leaves;
+        if(role === 'admin'){
+            leaves = await Leave.find({employeeId:id});
+        }
 
-        const leaves = await Leave.find({employeeId:employee._id});
-
+        else{
+             const employee = await Employee.findOne({userId:id})
+             leaves= await Leave.find({employeeId:employee._id});
+        }
         
         return res.status(201).json({ success: true, leaves });
 
@@ -85,7 +90,7 @@ export const getLeaveDetail = async (req, res) => {
                 },
                 {
                     path:'userId',
-                    select:'name , profileImage'
+                    select:'name  profileImage'
                 }
             ]
         });
@@ -95,3 +100,18 @@ export const getLeaveDetail = async (req, res) => {
          return handleError(res, error);
     }
 }
+
+
+export const updateLeave = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const leave = await Leave.findByIdAndUpdate({ _id:id}, {status:req.body.status });
+        if(!leave){
+          return res.status(404).json({ success: false, message: "Leave not found" });  
+        }
+        return res.status(200).json({success:true})
+    } catch (error) {
+        handleError(res,error);
+    };
+};
+

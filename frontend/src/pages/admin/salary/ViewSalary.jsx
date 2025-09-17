@@ -4,6 +4,7 @@ import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
+import { useAuth } from "../../../context/authContext";
 //import Loader from "../../../components/Loader";
 
 const ViewSalary = () => {
@@ -13,13 +14,14 @@ const ViewSalary = () => {
 
     const {id} = useParams();
 
+    const {user} = useAuth();
+
     let sno = 1;
     
 
         const getSalaryById = async () => {
             try {
-                // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/salary/${id}`, {
+                const res = await axios.get(`http://localhost:5000/api/salary/${id}/${user.role}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

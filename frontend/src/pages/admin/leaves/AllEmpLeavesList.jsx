@@ -12,7 +12,7 @@ const AllEmpLeavesList = () => {
 
       const [leaves, setLeaves] = useState([])
       const [loading, setLoading ] = useState(false);
-     //const[filteredLeaves, setFilteredLeaves] = useState([]);
+      const[filteredLeaves, setFilteredLeaves] = useState([]);
     
         // const {user} = useAuth();
     
@@ -39,8 +39,9 @@ const AllEmpLeavesList = () => {
                        status:lev.status,
                        action:( <LeaveButtons id = { lev._id }/>)
                         }))
-                        setLeaves(data);                         
-                        console.log("All leave", res.data.leaves);
+                        setLeaves(data);   
+                        setFilteredLeaves(data);
+                        //console.log("All leave", res.data.leaves);
     
                     }
                 } catch (error) {
@@ -56,16 +57,21 @@ const AllEmpLeavesList = () => {
             },[]);
     
     
-    // const filterSalary = (q) => {
-    //     const filterRecord = leaves.filter((lav) => lav.employeeId.toLocaleLowerCase().includes(q.toLocaleLowerCase()) )
-    //     setFilteredLeaves(filterRecord);
-    // }
+    const handleFilter = (e) => {
+        const filterRecord = leaves.filter((lev) => lev.employeeId.toLowerCase().includes(e.target.value.toLowerCase()) )
+        setFilteredLeaves(filterRecord);
+    }
     
+
+     const filterByButton = (status) => {
+        const filterRecord = leaves.filter((lev) => lev.status.toLowerCase().includes(status.toLowerCase()) )
+        setFilteredLeaves(filterRecord);
+    }
     
       
     return( 
         <>
-        {loading ? (
+        {loading && filteredLeaves ? (
           <Loader/>
         ) : (
       <div className="p-5">
@@ -75,21 +81,25 @@ const AllEmpLeavesList = () => {
          <div className="flex justify-between  items-centermt-4">
         <input 
              type="text" 
-             placeholder="Search by Emp.name" 
+             onChange={handleFilter}
+             placeholder="Search by Emp. ID" 
              className="px-4 py-1 bg-white shadow border" 
              />
 
              <div className="space-x-3">
-              <button className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Pending</button>
-              <button className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Approved</button>
-              <button className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Rejected</button>
+              <button onClick={() => filterByButton("Pending")}
+               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Pending</button>
+              <button onClick={() => filterByButton("Approved")}
+               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Approved</button>
+              <button onClick={() => filterByButton("Rejected")}
+               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Rejected</button>
              </div>
          </div>
         
         <div className="">
            <DataTable
             columns={columns}
-            data={leaves}
+            data={filteredLeaves}
             pagination
          />
         </div>

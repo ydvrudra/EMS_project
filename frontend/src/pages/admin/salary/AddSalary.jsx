@@ -21,7 +21,7 @@ function AddSalary() {
     payDate:null,
   });
   const [loading, setLoading] = useState(false);
-  const [departments, setDepartments] = useState(null);
+  const [departments, setDepartments] = useState([]);
   const [employees , setemployees] = useState([]);
 
   
@@ -41,6 +41,7 @@ function AddSalary() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setLoading(true)
     try { 
          await new Promise((resolve) => setTimeout(resolve, 2000));
 

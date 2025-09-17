@@ -21,7 +21,7 @@ export const columns = [
     }
 ]
 
-export const DepartmentButtons = ({ id, onFilterDepartment,onFetchDepartments }) => {
+export const DepartmentButtons = ({ id,onFetchDepartments }) => {
 
     const Navigate = useNavigate();
 
