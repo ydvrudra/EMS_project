@@ -18,7 +18,13 @@ dotenv.config();
 const allowedOrigins = ['https://ems-qic8.onrender.com']; 
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 

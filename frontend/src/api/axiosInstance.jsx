@@ -1,4 +1,4 @@
-// frontend/api/axiosInstance
+// frontend/api/axiosInstance.jsx
 
 import axios from "axios";
 
