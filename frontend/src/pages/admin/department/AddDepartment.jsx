@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { showToastError } from "../../../utils/showToastError";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 
 const AddDepartment = () => {
@@ -29,7 +29,7 @@ const handleSubmit = async(e) => {
     //console.log('dep',department);
     try { 
          await new Promise((resolve) => setTimeout(resolve, 2000));
-        const res = await axios.post("http://localhost:5000/api/department/add-department", department, {
+        const res = await axiosInstance.post("/api/department/add-department", department, {
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`
            }

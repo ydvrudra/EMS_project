@@ -46,11 +46,11 @@ const Login = () => {
         "/api/users/login",
         { email, password }
       );
-      console.log("resp", response.data);
+      //console.log("resp", response.data);
 
       if (response.data.success) {
         login(response.data.user, response.data.token)
-        console.log("user", response.data.user);
+       // console.log("user", response.data.user);
         localStorage.setItem("token", response.data.token);
         if(response.data.user.role === "admin"){
           toast.success("Login successful!");

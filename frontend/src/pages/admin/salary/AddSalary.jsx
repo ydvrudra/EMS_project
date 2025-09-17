@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { showToastError } from '../../../utils/showToastError';
 import Loader from '../../../components/Loader';
 import { fetchDepartments , fetchemployees } from '../employee/EmpHelper';
 import MetaData from '../../../components/MetaData';
-
-
+import axiosInstance from '../../../api/axiosInstance';
 
 
 function AddSalary() {
-
 
   const [salary, setSalary] = useState({
     employeeId:null,
@@ -45,7 +42,7 @@ function AddSalary() {
     try { 
          await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        const res = await axios.post(`http://localhost:5000/api/salary/add-salary` ,salary, {
+        const res = await axiosInstance.post(`/api/salary/add-salary` ,salary, {
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`,
            }

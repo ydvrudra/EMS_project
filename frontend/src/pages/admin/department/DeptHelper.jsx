@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
+import axiosInstance from "../../../api/axiosInstance";
 
 
 
@@ -29,7 +29,7 @@ export const DepartmentButtons = ({ id,onFetchDepartments }) => {
         const confirm = window.confirm("Are you sure you want to delete this department?");
         if (confirm) {
          try {
-                const res = await axios.delete(`http://localhost:5000/api/department/${id}`, {
+                const res = await axiosInstance.delete(`/api/department/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

@@ -1,10 +1,9 @@
 import React, { useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-//import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 const ViewEmployee = () => {
 
@@ -17,7 +16,7 @@ const ViewEmployee = () => {
         const getEmployeebyId = async () => {
             try {
                 // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/employee/${id}`, {
+                const res = await axiosInstance.get(`/api/employee/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
@@ -44,7 +43,7 @@ const ViewEmployee = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="">
-                    <img src={`http://localhost:5000/${employee.userId?.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
+                    <img src={`/${employee.userId?.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
                 </div>
                 <div className="">
                     <div className="flex space-x-3 mb-5">

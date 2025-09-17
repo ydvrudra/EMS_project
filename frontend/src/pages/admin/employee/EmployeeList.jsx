@@ -1,14 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import DataTable from 'react-data-table-component';
 import { columns,EmployeeButtons } from "./EmpHelper"
 import { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
-//import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 const EmployeeList = () => {
 
@@ -32,7 +30,7 @@ const EmployeeList = () => {
               const fetchemployees = async () => {
                   setEMpLoading(true);
                   try {
-                      const res = await axios.get("http://localhost:5000/api/employee", {
+                      const res = await axiosInstance.get("/api/employee", {
                           headers: {
                               Authorization: `Bearer ${localStorage.getItem("token")}`
                           }
@@ -46,7 +44,7 @@ const EmployeeList = () => {
                               dep_name: emp.department.dep_name,
                               name: emp.userId.name,
                               dob: new Date(emp.dob).toLocaleDateString(),
-                              profileImage:  <img width={40} className="rounded-full" src={`http://localhost:5000/${emp.userId?.profileImage}`}/>,
+                              profileImage:  <img width={40} className="rounded-full" src={`/${emp.userId?.profileImage}`}/>,
                               action:( <EmployeeButtons id = { emp._id }/>)
                           }))
                           

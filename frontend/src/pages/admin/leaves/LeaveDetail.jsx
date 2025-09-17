@@ -1,9 +1,8 @@
 import React, { useState , useEffect} from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-//import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import axiosInstance from "../../../api/axiosInstance";
 
 const LeaveDetail = () => {
 
@@ -15,7 +14,7 @@ const LeaveDetail = () => {
 
     const changeStatus = async (id, status) => {
          try {
-                    const res = await axios.put(`http://localhost:5000/api/leave/${id}`,{status}, {
+                    const res = await axiosInstance.put(`/api/leave/${id}`,{status}, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         }
@@ -31,7 +30,7 @@ const LeaveDetail = () => {
       useEffect(() => {
             const getAllLeaves = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/leave/leave-detail/${id}`, {
+                    const res = await axiosInstance.get(`/api/leave/leave-detail/${id}`, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         }
@@ -56,7 +55,7 @@ const LeaveDetail = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="">
-                    <img src={`http://localhost:5000/${leave.employeeId.userId.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
+                    <img src={`/${leave.employeeId.userId.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
                 </div>
                 <div className="">
                     <div className="flex space-x-3 mb-3">

@@ -1,10 +1,10 @@
 import React from "react";
 import {useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 
 
@@ -26,7 +26,7 @@ const EditDepartment = () => {
         setDeptLoading(true);
         try {
             await new Promise((resolve) => setTimeout(resolve, 2000));
-            const res = await axios.put(`http://localhost:5000/api/department/${id}`, department, {
+            const res = await axiosInstance.put(`/api/department/${id}`, department, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`        
                 }
@@ -47,7 +47,7 @@ const EditDepartment = () => {
             setDeptLoading(true);
             try {
                 // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/department/${id}`, {
+                const res = await axiosInstance.get(`/api/department/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

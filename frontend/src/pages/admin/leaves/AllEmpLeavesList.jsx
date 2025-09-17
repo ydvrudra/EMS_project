@@ -1,11 +1,11 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import { useEffect ,useState} from "react";
-import axios from "axios";
 import {columns, LeaveButtons } from "./LeaveHelper";
 import DataTable from "react-data-table-component";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
+import axiosInstance from "../../../api/axiosInstance";
 //import { useAuth } from "../../../context/authContext";
 
 const AllEmpLeavesList = () => {
@@ -20,7 +20,7 @@ const AllEmpLeavesList = () => {
                 setLoading(true);
                 try {
                     //  await new Promise((resolve) => setTimeout(resolve, 2000));  
-                    const res = await axios.get(`http://localhost:5000/api/leave`, {
+                    const res = await axiosInstance.get(`/api/leave`, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         }

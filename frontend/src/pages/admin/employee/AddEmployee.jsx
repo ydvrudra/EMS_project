@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { fetchDepartments } from './EmpHelper';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { showToastError } from '../../../utils/showToastError';
 import MetaData from '../../../components/MetaData';
+import axiosInstance from '../../../api/axiosInstance';
 
 
 
@@ -41,7 +41,7 @@ function AddEmployee() {
 
     try { 
          await new Promise((resolve) => setTimeout(resolve, 2000));
-        const res = await axios.post("http://localhost:5000/api/employee/add-employee", formDataObj, {
+        const res = await axiosInstance.post("/api/employee/add-employee", formDataObj, {
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`
            }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminSummaryCard from "./AdminSummaryCard";
 import { FaUsers , FaBuilding, FaMoneyBillWaveAlt,FaFileAlt, FaCheckCircle ,FaHourglassEnd , FaTimesCircle   } from "react-icons/fa";
 import { showToastError } from "../../utils/showToastError";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance";
 
 
 const AdminSummary =  () => {
@@ -12,7 +12,7 @@ const AdminSummary =  () => {
     useEffect(() => {
             const fetchSummary = async () => {
                 try {
-                  const summary = await axios.get(`http://localhost:5000/api/dashboard/summary`, {
+                  const summary = await axiosInstance.get(`/api/dashboard/summary`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

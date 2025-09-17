@@ -4,11 +4,11 @@ import DataTable from 'react-data-table-component';
 import { columns, DepartmentButtons } from "./DeptHelper";
 import { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
 //import toast from "react-hot-toast";
 import { showToastError } from "../../../utils/showToastError";
 import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
+import axiosInstance from "../../../api/axiosInstance";
 
 
 const DepartmentList = () => {
@@ -32,7 +32,7 @@ const DepartmentList = () => {
         const fetchDepartments = async () => {
             setDeptLoading(true);
             try {
-                const res = await axios.get("http://localhost:5000/api/department", {
+                const res = await axiosInstance.get("/api/department", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }

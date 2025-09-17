@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { fetchDepartments } from './EmpHelper';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { showToastError } from '../../../utils/showToastError';
 import Loader from '../../../components/Loader';
 import MetaData from '../../../components/MetaData';
+import axiosInstance from '../../../api/axiosInstance';
 
 
 
@@ -51,7 +51,7 @@ function EditEmployee() {
     if (employee.profileImage) {
       formData.append("image", employee.profileImage); 
     }
-        const res = await axios.put(`http://localhost:5000/api/employee/${id}` ,formData, {
+        const res = await axiosInstance.put(`/api/employee/${id}` ,formData, {
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`,
               "Content-Type": "multipart/form-data",
@@ -86,7 +86,7 @@ function EditEmployee() {
       const getEmployeebyId = async () => {
             try {
                 // Fetch department details using the id
-                const res = await axios.get(`http://localhost:5000/api/employee/${id}`, {
+                const res = await axiosInstance.get(`/api/employee/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
@@ -217,7 +217,7 @@ function EditEmployee() {
             {/* Image Preview */}
             {employee.profileImage && typeof employee.profileImage === 'string' && (
             <img
-                src={`http://localhost:5000/${employee.profileImage}`}
+                src={`/${employee.profileImage}`}
                 alt="Profile Preview"
                 className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-md"
             />

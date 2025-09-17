@@ -1,5 +1,4 @@
-import axios from "axios";
-import toast from "react-hot-toast";
+import axiosInstance from "../../../api/axiosInstance";
 import { showToastError } from "../../../utils/showToastError";
 import { useNavigate } from "react-router-dom";
 
@@ -55,7 +54,7 @@ export const fetchDepartments = async () => {
 
            let departments
             try {
-                const res = await axios.get("http://localhost:5000/api/department", {
+                const res = await axiosInstance.get("/api/department", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
@@ -77,7 +76,7 @@ export const fetchemployees = async (id) => {
 
            let employees
             try {
-                const res = await axios.get(`http://localhost:5000/api/employee/department/${id}`, {
+                const res = await axiosInstance.get(`/api/employee/department/${id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
