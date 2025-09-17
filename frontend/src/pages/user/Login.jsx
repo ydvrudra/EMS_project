@@ -1,4 +1,4 @@
-import axios from "../../api/axiosInstance";
+import axiosInstance from "../../api/axiosInstance";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -42,7 +42,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "/api/users/login",
         { email, password }
       );

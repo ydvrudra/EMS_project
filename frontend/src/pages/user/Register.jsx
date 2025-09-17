@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { showToastError } from "../../utils/showToastError";
 import { useAuth } from "../../context/authContext";
+import axiosInstance from "../../api/axiosInstance";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -77,16 +77,16 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/register",
+      const response = await axiosInstance.post(
+        "/api/users/register",
         { name, email, password}
       );
 
       toast.success("Registration successful!");
 
        // Auto login after registration
-      const loginRes = await axios.post(
-      "http://localhost:5000/api/users/login",
+      const loginRes = await axiosInstance.post(
+      "/api/users/login",
       { email, password }
     );
 
