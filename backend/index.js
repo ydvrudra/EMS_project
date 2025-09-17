@@ -15,11 +15,15 @@ import DashboardRoutes from './routes/dashboard.js'
 const app = express();
 dotenv.config();
 
-const allowedOrigins = ['https://ems-qic8.onrender.com']; 
+const allowedOrigins = [
+    'https://ems-qic8.onrender.com',
+     'http://localhost:5173', 
+     undefined
+]; 
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
