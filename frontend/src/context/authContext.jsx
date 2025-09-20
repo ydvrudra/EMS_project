@@ -61,7 +61,13 @@ useEffect(() => {
     return (
         <>
         <userContext.Provider value={{user, login, logout, loading, setLoading}}>
-            {children}
+            {loading ? (
+        <div className="flex justify-center items-center h-screen text-lg font-medium">
+          Loading...
+        </div>
+      ) : (
+        children
+      )}
         </userContext.Provider>
         </>
     );
