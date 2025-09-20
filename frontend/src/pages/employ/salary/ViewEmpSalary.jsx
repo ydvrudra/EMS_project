@@ -54,11 +54,11 @@ const filterSalary = (q) => {
     {filteredSalaries === null ? (
         <Loader/>
     ) : (
-        <div className="overflow-x-auto p-5">
-            <div className="text-center">
-                <h2 className="text-2xl font-bold">Salary History</h2>
+        <div className="overflow-x-auto p-2 sm:p-6 mt-12">
+            <div className="">
+                <h2 className="text-2xl text-center font-bold mb-6">Salary History</h2>
             </div>
-            <div className="flex justify-end my-3">
+            <div className="flex my-3">
                 <input 
                 type="text" 
                 className="border px-2 rounded border-gray-300 py-1"

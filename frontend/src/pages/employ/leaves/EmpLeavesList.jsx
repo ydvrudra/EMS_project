@@ -56,11 +56,11 @@ const EmpLeavesList = () => {
         <> {loading ? (
             <Loader/>
         ) : (
-             <div className="p-5">
+             <div className="p-2 sm:p-6 mt-12">
           <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Leaves</h3>
       </div>
-      <div className="flex justify-between  items-center space-x-4 mt-4">
+      <div className="flex justify-between items-center space-x-4 my-4">
         <input 
              type="text" 
              placeholder="Search by Emp.name" 

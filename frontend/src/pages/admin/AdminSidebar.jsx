@@ -6,9 +6,8 @@ import { FaTachometerAlt,FaUsers ,FaBuilding, FaCalendarAlt,FaMoneyBillWaveAlt ,
 const AdminSidebar = () => {
     return(
         <>
-        <div className="bg-gray-800 text-white w-64 h-screen fixed left-0 top-0 bottom-0 space-y-2">
-            <div className="bg-teal-600 h-12 flex items-center justify-center">
-                <h3 className="text-2xl text-center font-great">Employee Rudra</h3>
+        <div className="bg-gray-800 text-white w-44 sm:w-60 h-screen fixed left-0 top-0 bottom-0 space-y-2">
+            <div className="bg-teal-600 h-12">
             </div>
             <div className="px-4">
 
@@ -18,7 +17,7 @@ const AdminSidebar = () => {
                 end
                 >
                 <FaTachometerAlt />
-                <span className="">Dashboard</span>
+                <span className="text-sm">Dashboard</span>
                 </NavLink>
 
                 {/* employee */}
@@ -27,7 +26,7 @@ const AdminSidebar = () => {
                 end
                 >
                 <FaUsers />
-                <span className="">Employee</span>
+                <span className="text-sm">Employee</span>
                 </NavLink>
 
                 {/* departments */}
@@ -36,7 +35,7 @@ const AdminSidebar = () => {
                end
                 >
                 <FaBuilding />
-                <span className="">Departments</span>
+                <span className="text-sm">Departments</span>
                 </NavLink>
                  
                  {/* leaves */}
@@ -45,7 +44,7 @@ const AdminSidebar = () => {
                 end
                 >
                 <FaCalendarAlt  />
-                <span className="">Leaves</span>
+                <span className="text-sm">Leaves</span>
                 </NavLink>
 
                  {/* salary */}
@@ -54,7 +53,7 @@ const AdminSidebar = () => {
                 end
                 >
                 <FaMoneyBillWaveAlt  />
-                <span className="">Salary</span>
+                <span className="text-sm">Salary</span>
                 </NavLink>
 
                 {/* setting */}
@@ -63,7 +62,7 @@ const AdminSidebar = () => {
                 end
                 >
                 <FaCogs />
-                <span className="">Setting</span>
+                <span className="text-sm">Setting</span>
                 </NavLink>
             </div>
         </div>

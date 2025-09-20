@@ -25,7 +25,7 @@ const EmpDashboard = () => {
         <MetaData title={user.name}/>
         <div className="flex">
             <EMpSidebar/>
-            <div className="flex-1 ml-64 bg-gray-100 h-screen">
+            <div className="flex-1 ml-44 sm:ml-60 bg-gray-100 h-screen">
                 <EMpNavbar/>
                 <Outlet/>
             </div>

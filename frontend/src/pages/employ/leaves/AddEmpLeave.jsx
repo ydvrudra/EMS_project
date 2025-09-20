@@ -55,9 +55,9 @@ function AddEmpLeave() {
     
   return (
     <>
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96 sm:w-full">
+    <div className="max-w-3xl mx-auto mt-12 bg-white p-6 w-96 sm:w-full">
       <h2 className="text-2xl font-bold mb-6">Request For Leave</h2>
-      <form  onSubmit={handleSubmit}  action="" className="">
+      <form  onSubmit={handleSubmit}  action="" className="rounded shadow-md shadow-gray-300 border-2 p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           {/* Leave Type*/}

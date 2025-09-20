@@ -36,7 +36,7 @@ const AdminDashboard = () => {
         <MetaData title={user.name}/>
         <div className="flex">
             <AdminSidebar/>
-            <div className="flex-1 ml-64 bg-gray-100 h-screen">
+            <div className="flex-1 ml-44 sm:ml-60 bg-gray-100 h-screen">
                 <AdminNavbar/>
                 <Outlet/>
             </div>

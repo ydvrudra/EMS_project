@@ -49,52 +49,52 @@ const LeaveDetail = () => {
     
     return(
         <>{leave ? (
-        <div className="max-w-3xl mx-auto mt-10 bg-gray-100 p-10 rounded shadow-lg w-96 sm:w-full">
-            <h2 className="text-2xl font-bold mb-8 text-center">
+        <div className="mt-12 bg-gray-100 p-2 py-6 sm:p-6">
+            <h2 className="text-2xl font-bold mb-4 text-center">
                 Leave Details
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-24 rounded shadow-lg shadow-gray-300 border-2 p-2 md:p-10">
                 <div className="">
-                    <img src={`/${leave.employeeId.userId.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
+                    <img src={`/${leave.employeeId.userId.profileImage}`} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
                 </div>
                 <div className="">
-                    <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Name:</p>
-                        <p className="font-medium">{leave.employeeId.userId.name}</p>
+                    <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Name:</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId.userId.name}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Emp ID:</p>
-                        <p className="font-medium">{leave.employeeId.employeeId}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Emp ID:</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId.employeeId}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Leave Type:</p>
-                        <p className="font-medium">{leave.leaveType}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Leave Type:</p>
+                        <p className="text-sm sm:text-lg">{leave.leaveType}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Reason:</p>
-                        <p className="font-medium">{leave.reason}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Reason:</p>
+                        <p className="text-sm sm:text-lg">{leave.reason}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Department:</p>
-                        <p className="font-medium">{leave.employeeId.department.dep_name}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Department:</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId.department.dep_name}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">Start Date:</p>
-                        <p className="font-medium">{new Date(leave.startDate).toLocaleDateString()}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Start Date:</p>
+                        <p className="text-sm sm:text-lg">{new Date(leave.startDate).toLocaleDateString()}</p>
                     </div>
 
-                    <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">End Date:</p>
-                        <p className="font-medium">{new Date(leave.endDate).toLocaleDateString()}</p>
+                    <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">End Date:</p>
+                        <p className="text-sm sm:text-lg">{new Date(leave.endDate).toLocaleDateString()}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-3">
-                        <p className="text-lg font-bold">
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">
                             {leave.status === "Pending" ? "Action:" : "Status:"}
                         </p>
                         {leave.status === "Pending" ? (

@@ -74,25 +74,25 @@ const AllEmpLeavesList = () => {
         {loading && filteredLeaves ? (
           <Loader/>
         ) : (
-      <div className="p-5">
+      <div className="p-2 sm:p-6 mt-12 mx-auto w-96 sm:w-full">
         <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Leaves</h3>
+        <h3 className="text-2xl font-bold my-6">Manage Leaves</h3>
        </div>
-         <div className="flex justify-between  items-centermt-4">
+         <div className="flex justify-between items-center my-4">
         <input 
              type="text" 
              onChange={handleFilter}
              placeholder="Search by Emp. ID" 
-             className="px-4 py-1 bg-white shadow border" 
+             className="px-2 py-1 bg-white shadow border w-32 sm:w-40 text-sm" 
              />
 
-             <div className="space-x-3">
+             <div className="space-x-1 sm:space-x-3">
               <button onClick={() => filterByButton("Pending")}
-               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Pending</button>
+               className="px-2 py-1 text-sm bg-teal-600 text-white hover:bg-teal-700">Pending</button>
               <button onClick={() => filterByButton("Approved")}
-               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Approved</button>
+               className="px-2 py-1 text-sm bg-teal-600 text-white hover:bg-teal-700">Approved</button>
               <button onClick={() => filterByButton("Rejected")}
-               className="px-2 py-1 bg-teal-600 text-white hover:bg-teal-700">Rejected</button>
+               className="px-2 py-1 text-sm bg-teal-600 text-white hover:bg-teal-700">Rejected</button>
              </div>
          </div>
         

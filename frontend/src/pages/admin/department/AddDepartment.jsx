@@ -53,9 +53,10 @@ const handleSubmit = async(e) => {
   return ( 
     <div>
         <MetaData title="Add Department"/>
-      <div className="max-w-3xl mx-auto p-8 bg-white rounded shadow-md mt-10 w-96 ">
-        <h2 className="text-2xl font-bold mb-6">Add New Department</h2>
-            <form onSubmit={handleSubmit} action="">
+      <div className="max-w-3xl mx-auto p-2 sm:p-6 mt-12 w-96 sm:w-full ">
+        <h2 className="text-2xl font-bold my-6 text-center">Add New Department</h2>
+           <div className="m-2 p-4 rounded shadow-md border-2 shadow-gray-300 ">
+             <form onSubmit={handleSubmit} action="" className="">
                 <div className="">
                     <label htmlFor="dep_name" className="block text-gray-700">Department Name</label>
                     <input type="text"
@@ -83,6 +84,7 @@ const handleSubmit = async(e) => {
                      className={`w-full ${loading ? "bg-teal-600 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-800"} px-4 py-2 text-white rounded transition`}>{loading ? "Adding..." : "Add Department"}</button>
                 </div>
             </form>
+           </div>
       </div>
     </div>
   

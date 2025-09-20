@@ -119,10 +119,10 @@ function EditEmployee() {
     <>
    <MetaData title={employee.name ? `Edit: ${employee.name}` : 'Edit Employee'} />
     { departments && employee ? (
-    <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Edit Employee</h2>
-      <form onSubmit={handleSubmit} action="" className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="mt-12 bg-white p-2 sm:p-6">
+      <h2 className="text-2xl font-bold mb-6 text-center">Edit Employee</h2>
+      <form onSubmit={handleSubmit} action="" className="shadow-md shadow-gray-300 border-2 rounded-md p-4">
+        <div className="grid sm:grid-cols-2 gap-6">
           {/* Name */}
           <div className="">
             <label htmlFor="" className="block text-sm font-medium text-gray-700">
@@ -250,7 +250,7 @@ function EditEmployee() {
         <button
         type='submit'
          disabled={loading} 
-         className={`w-full ${loading ? "bg-teal-600 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-800"} mt-6  text-white font-bold py-2 px-4 rounded transition`}>{loading ? "Updating..." : "update Employee"}
+         className={`w-full ${loading ? "bg-teal-600 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-800"} mt-6  text-white font-bold py-2 px-4 rounded transition`}>{loading ? "Updating..." : "Update Employee"}
          </button>
       </form>
     </div>

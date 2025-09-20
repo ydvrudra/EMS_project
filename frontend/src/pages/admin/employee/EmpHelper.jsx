@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 export const columns = [
     {
         name: "S No",
         selector: (row) => row.sno,
         width:"70px",
+        
     },
     
     {

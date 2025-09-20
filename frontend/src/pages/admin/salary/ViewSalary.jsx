@@ -54,7 +54,7 @@ const filterSalary = (q) => {
     {filteredSalaries === null ? (
         <Loader/>
     ) : (
-        <div className="overflow-x-auto p-5 mx-auto w-96 sm:w-full">
+        <div className="overflow-x-auto p-2 mt-12 sm:p-6 mx-auto w-96 sm:w-full">
             <div className="text-center">
                 <h2 className="text-2xl font-bold">Salary History</h2>
             </div>

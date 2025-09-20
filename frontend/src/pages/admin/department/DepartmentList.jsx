@@ -70,17 +70,17 @@ const DepartmentList = () => {
   return (
     <>
     <MetaData title= "Department List"/>
-    <div className="p-5 mx-auto w-96 sm:w-full">
+    <div className="p-2 sm:p-6 mt-12 mx-auto w-96 sm:w-full">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Departments</h3>
       </div>
-      <div className="flex justify-between  items-center space-x-4 mt-4">
+      <div className="flex justify-between items-center space-x-2 my-4">
         <input 
              onChange={searchDept}
              type="text" 
              placeholder="Search by dep. name" 
-             className="px-4 py-1 bg-white shadow border" />
-        <Link to="/admin-dashboard/add-department" className="px-4 py-1 text-[8px] sm:text-xl bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Department
+             className="px-2 py-1 bg-white shadow border text-sm" />
+        <Link to="/admin-dashboard/add-department" className="px-4 py-1 text-xs sm:text-lg bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Department
         </Link>
       </div>
 

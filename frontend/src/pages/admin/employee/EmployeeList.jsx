@@ -71,17 +71,17 @@ const EmployeeList = () => {
     return(
         <>
         <MetaData title = "Employee List"/>
-        <div className="p-5 mx-auto w-96 sm:w-full">
+        <div className="p-5 pt-16 mx-auto w-96 sm:w-full">
           <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Employee</h3>
+        <h3 className="text-xl sm:text-2xl font-bold">Manage Employee</h3>
       </div>
-      <div className="flex justify-between  items-center space-x-4 mt-4">
+      <div className="flex justify-between items-center space-x-3 my-4">
         <input 
              type="text" 
              onChange={handleFilter}
              placeholder="Search by Emp.name" 
-             className="px-4 py-1 bg-white shadow border" />
-        <Link to="/admin-dashboard/add-employee" className="px-4 py-1 text-[8px] sm:text-xl bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
+             className="px-2 py-1 text-sm bg-white shadow border" />
+        <Link to="/admin-dashboard/add-employee" className="px-3 py-1 text-sm bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
         </Link>
          </div>
 

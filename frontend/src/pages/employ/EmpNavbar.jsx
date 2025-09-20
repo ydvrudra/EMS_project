@@ -9,7 +9,7 @@ const EMpNavbar = () => {
   if (loading) return <Loader />; 
 
   return (
-    <div className="flex items-center justify-between mx-auto w-full text-white h-14 bg-teal-600 px-4 shadow-md">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between mx-auto w-full text-white h-12  bg-teal-600 px-2">
       {/* Left: Profile + Name */}
       <div className="flex items-center space-x-3">
         {/* Profile Image */}
@@ -21,15 +21,15 @@ const EMpNavbar = () => {
           />
         )}
         {/* User Name */}
-        <p className="text-md font-medium">
-          Welcome, <span className="font-semibold">{user?.name}</span>
+        <p className="text-sm capitalize ml-6">
+          Welcome, <span className="font-great text-xl">{user?.name}</span>
         </p>
       </div>
 
       {/* Right: Logout Button */}
       <button
         onClick={logout}
-        className="bg-white text-teal-700 px-3 py-1 rounded hover:bg-gray-100 transition"
+        className="bg-gray-700 text-sm px-2 py-1.5 rounded font-normal hover:bg-teal-800 transition"
       >
         Logout
       </button>

@@ -63,9 +63,9 @@ const Setting = () => {
   return (
    <>
    <MetaData title="Change password"/>
-    <div className="mx-auto mt-10 p-10 rounded-md shadow-xl bg-white w-96">
-      <h2 className="text-2xl font-bold mb-4">Change Password</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="mt-12 max-w-3xl mx-auto  w-96 sm:w-full bg-white p-2 sm:p-6">
+      <h2 className="text-2xl font-bold mb-6 text-center">Change Password</h2>
+      <form onSubmit={handleSubmit} className="shadow-md shadow-gray-300 border-2 rounded-md p-4">
         <label className="text-xm font-medium text-gray-700">Old Password</label>
         <input
           type="password"

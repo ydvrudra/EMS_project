@@ -18,7 +18,11 @@ export const columns = [
     {
         name: "Action",
         selector: (row) => row.action,
-    }
+        width:"160px",
+         center:true,
+    },
+
+    
 ]
 
 export const DepartmentButtons = ({ id,onFetchDepartments }) => {

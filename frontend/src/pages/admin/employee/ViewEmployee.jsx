@@ -37,43 +37,43 @@ const ViewEmployee = () => {
         <>
        <MetaData title= "Employee Details" />
         {employee ? (
-        <div className="max-w-3xl mx-auto mt-10 bg-gray-100 p-10 rounded shadow-lg">
-            <h2 className="text-2xl font-bold mb-8 text-center">
+        <div className="max-w-3xl mx-auto w-96 sm:w-full mt-12 bg-gray-100 p-2 py-6 sm:p-6">
+            <h2 className="text-2xl font-bold mb-4 text-center">
                 Employee Details
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-24 rounded shadow-lg shadow-gray-300 border-2 p-2 md:p-10">
                 <div className="">
-                    <img src={`/${employee.userId?.profileImage}`} alt="" className="rounded-full border w-72 h-72" />
+                    <img src={`/${employee.userId?.profileImage}`} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
                 </div>
                 <div className="">
-                    <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">Name:</p>
-                        <p className="font-medium">{employee.userId?.name}</p>
+                    <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Name:</p>
+                        <p className="text-sm sm:text-lg font-medium">{employee.userId?.name}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">Employee ID:</p>
-                        <p className="font-medium">{employee.employeeId}</p>
+                     <div className="flex items-center  space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Employee ID:</p>
+                        <p className="text-sm sm:text-lg font-medium">{employee.employeeId}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">DOB:</p>
-                        <p className="font-medium">{new Date(employee.dob).toLocaleDateString()}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">DOB:</p>
+                        <p className="text-sm sm:text-lg font-medium">{new Date(employee.dob).toLocaleDateString()}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">Gender:</p>
-                        <p className="font-medium">{employee.gender}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Gender:</p>
+                        <p className="text-sm sm:text-lg font-medium">{employee.gender}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">Department:</p>
-                        <p className="font-medium">{employee.department?.dep_name}</p>
+                     <div className="flex items-center space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Department:</p>
+                        <p className="text-sm sm:text-lg font-medium">{employee.department?.dep_name}</p>
                     </div>
 
-                     <div className="flex space-x-3 mb-5">
-                        <p className="text-lg font-bold">Marital Status:</p>
-                        <p className="font-medium">{employee.maritalStatus}</p>
+                     <div className="flex items-center  space-x-2 mb-3">
+                        <p className="text-sm sm:text-lg font-bold">Marital Status:</p>
+                        <p className="text-sm sm:text-lg font-medium">{employee.maritalStatus}</p>
                     </div>
                 </div>
             </div>
