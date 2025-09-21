@@ -119,7 +119,7 @@ function EditEmployee() {
     <>
    <MetaData title={employee.name ? `Edit: ${employee.name}` : 'Edit Employee'} />
     { departments && employee ? (
-    <div className="mt-12 bg-white p-2 sm:p-6">
+    <div className="max-w-3xl mx-auto w-96 sm:w-full mt-12 bg-gray-100 p-4 py-6 sm:p-6">
       <h2 className="text-2xl font-bold mb-6 text-center">Edit Employee</h2>
       <form onSubmit={handleSubmit} action="" className="shadow-md shadow-gray-300 border-2 rounded-md p-4">
         <div className="grid sm:grid-cols-2 gap-6">

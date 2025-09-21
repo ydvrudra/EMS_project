@@ -53,7 +53,7 @@ const handleSubmit = async(e) => {
   return ( 
     <div>
         <MetaData title="Add Department"/>
-      <div className="max-w-3xl mx-auto p-2 sm:p-6 mt-12 w-96 sm:w-full ">
+      <div className="max-w-3xl mx-auto p-4 sm:p-6 mt-12 w-96 sm:w-full ">
         <h2 className="text-2xl font-bold my-6 text-center">Add New Department</h2>
            <div className="m-2 p-4 rounded shadow-md border-2 shadow-gray-300 ">
              <form onSubmit={handleSubmit} action="" className="">

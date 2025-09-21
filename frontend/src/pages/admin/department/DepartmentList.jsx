@@ -70,7 +70,7 @@ const DepartmentList = () => {
   return (
     <>
     <MetaData title= "Department List"/>
-    <div className="p-2 sm:p-6 mt-12 mx-auto w-96 sm:w-full">
+    <div className="p-4 sm:p-6 mt-12 mx-auto w-96 sm:w-full">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Departments</h3>
       </div>

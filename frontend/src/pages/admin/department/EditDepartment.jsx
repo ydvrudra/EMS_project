@@ -71,7 +71,7 @@ const EditDepartment = () => {
     return ( 
           <div>
             <MetaData title= "Edit Department"/>
-      <div className="max-w-3xl mx-auto p-2 sm:p-6 bg-white  mt-10 w-96 sm:w-full ">
+      <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white  mt-10 w-96 sm:w-full ">
         <h2 className="text-2xl font-bold my-6 text-center">Edit Department</h2>
             <form onSubmit={handleSubmit} action="" className="p-4 m-4 shadow-md border-2 rounded shadow-gray-300">
                 <div className="">

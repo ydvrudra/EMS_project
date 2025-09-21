@@ -81,7 +81,7 @@ const EmployeeList = () => {
              onChange={handleFilter}
              placeholder="Search by Emp.name" 
              className="px-2 py-1 text-sm bg-white shadow border" />
-        <Link to="/admin-dashboard/add-employee" className="px-3 py-1 text-sm bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
+        <Link to="/admin-dashboard/add-employee" className="px-3 py-1 text-[8px] sm:text-sm bg-teal-600 hover:bg-teal-800 text-white rounded">Add New Employee
         </Link>
          </div>
 

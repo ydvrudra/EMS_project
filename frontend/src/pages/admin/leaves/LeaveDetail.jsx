@@ -49,7 +49,7 @@ const LeaveDetail = () => {
     
     return(
         <>{leave ? (
-        <div className="mt-12 bg-gray-100 p-2 py-6 sm:p-6">
+        <div className="max-w-3xl mx-auto w-96 sm:w-full mt-12 bg-gray-100 p-4 py-6 sm:p-6">
             <h2 className="text-2xl font-bold mb-4 text-center">
                 Leave Details
             </h2>
