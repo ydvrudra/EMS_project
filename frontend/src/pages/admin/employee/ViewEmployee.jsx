@@ -7,6 +7,7 @@ import axiosInstance from "../../../api/axiosInstance";
 
 const ViewEmployee = () => {
 
+    const backendURL = import.meta.env.VITE_API_URL;
     const [employee, setEmployee] = useState(null)
 
     const {id} = useParams();
@@ -43,7 +44,7 @@ const ViewEmployee = () => {
             </h2>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-24 rounded shadow-lg shadow-gray-300 border-2 p-2 md:p-10">
                 <div className="">
-                    <img src={`/${employee.userId?.profileImage}`} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
+                    <img src={`${backendURL}/uploads/${employee.userId.profileImage}`} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
                 </div>
                 <div className="">
                     <div className="flex items-center space-x-2 mb-3">

@@ -1,10 +1,10 @@
 // frontend/api/axiosInstance.jsx
-
 import axios from "axios";
 
+const baseURL = import.meta.env.VITE_API_URL; 
+
 const axiosInstance = axios.create({
-  //baseURL: import.meta.env.VITE_API_URL,
-  baseURL: "https://ems-backend-825w.onrender.com",
+  baseURL,
   withCredentials: true, 
 });
 

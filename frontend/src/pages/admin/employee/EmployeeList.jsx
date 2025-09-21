@@ -1,3 +1,4 @@
+//src/pages/admin/EmployeeList.jsx
 import { Link } from "react-router-dom";
 import DataTable from 'react-data-table-component';
 import { columns,EmployeeButtons } from "./EmpHelper"
@@ -8,7 +9,10 @@ import Loader from "../../../components/Loader";
 import MetaData from "../../../components/MetaData";
 import axiosInstance from "../../../api/axiosInstance";
 
+
 const EmployeeList = () => {
+
+ const backendURL = import.meta.env.VITE_API_URL;
 
   const [employees, setemployees] = useState([]);
   const [empLoading, setEMpLoading] = useState(false);
@@ -35,18 +39,24 @@ const EmployeeList = () => {
                               Authorization: `Bearer ${localStorage.getItem("token")}`
                           }
                       });
+
                       if (res.data.success) {
                           let sno = 1;
-                          const data = await res.data.employees.map((emp) => ({
-                              
-                              _id: emp._id,
-                              sno: sno++,
-                              dep_name: emp.department.dep_name,
-                              name: emp.userId.name,
-                              dob: new Date(emp.dob).toLocaleDateString(),
-                              profileImage:  <img width={40} className="rounded-full" src={`/${emp.userId?.profileImage}`}/>,
-                              action:( <EmployeeButtons id = { emp._id }/>)
-                          }))
+                         const data = res.data.employees.map((emp, index) => ({
+                            _id: emp._id,
+                            sno: sno + 1,
+                            dep_name: emp.department.dep_name,
+                            name: emp.userId.name,
+                            dob: new Date(emp.dob).toLocaleDateString(),
+                            profileImage: (
+                                <img
+                                width={40}
+                                className="rounded-full"
+                                src={emp.userId?.profileImage ? `${backendURL}/uploads/${emp.userId.profileImage}` : "/default-avatar.png"}
+                                />
+                            ),
+                            action: <EmployeeButtons id={emp._id} />
+                            }));
                           
                           setemployees(data);
                           setSearchEmpName(data)

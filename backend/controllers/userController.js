@@ -1,4 +1,4 @@
-//backend/userController.json
+//backend/userController.js
 
 import User from "../models/User.js";
 import bcrypt from "bcrypt";

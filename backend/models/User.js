@@ -1,3 +1,4 @@
+//backend/models
 import mongoose, { now } from "mongoose";
 
 const userSchema = new mongoose.Schema({

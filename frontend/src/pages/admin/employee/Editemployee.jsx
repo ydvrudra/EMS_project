@@ -1,3 +1,4 @@
+//src/pages/admin/employee/edit
 import React, { useEffect, useState } from 'react'
 import { fetchDepartments } from './EmpHelper';
 import toast from 'react-hot-toast';
@@ -9,8 +10,9 @@ import axiosInstance from '../../../api/axiosInstance';
 
 
 
-
 function EditEmployee() {
+
+  const backendURL = import.meta.env.VITE_API_URL;
 
 
   const [employee, setEmployee] = useState({
@@ -93,7 +95,7 @@ function EditEmployee() {
                 });
                 if (res.data.success) {
                     const employee = res.data.employee;
-                    console.log("Profile Image from backend:", employee.userId?.profileImage);
+                    //console.log("Profile Image from backend:", employee.userId?.profileImage);
 
                     setEmployee((prev) => ({
                         ...prev,
@@ -102,7 +104,7 @@ function EditEmployee() {
                         designation:employee.designation,
                         salary:employee.salary,
                         department:employee.department,
-                         profileImage: employee.userId.profileImage, 
+                        profileImage: employee.userId.profileImage, 
                     }));
                     console.log("employee getby id", res.data.employee);
 
@@ -217,7 +219,7 @@ function EditEmployee() {
             {/* Image Preview */}
             {employee.profileImage && typeof employee.profileImage === 'string' && (
             <img
-                src={`/${employee.profileImage}`}
+                src={employee.profileImage ? `${backendURL}/uploads/${employee.profileImage}` : "/default-avatar.png"}
                 alt="Profile Preview"
                 className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-md"
             />

@@ -1,3 +1,4 @@
+//routes/empRoutes.js
 import express from 'express';
 import { addEmployee,getEmployees, getEmployeebyId,UpdateEmployeebyId ,fetchEmployeesByDeptId} from '../controllers/empController.js';
 import authmiddleware from '../middleware/authMiddleware.js';

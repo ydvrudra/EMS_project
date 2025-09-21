@@ -1,9 +1,9 @@
+//controllers/userController
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import Employee from "../models/Employee.js";
 import fs from 'fs';
 import path from 'path';
-
 import { handleError } from "../middleware/errorHandler.js";
 
 
