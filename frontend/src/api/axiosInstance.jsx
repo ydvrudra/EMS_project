@@ -1,10 +1,12 @@
-// frontend/api/axiosInstance.jsx
-
 import axios from "axios";
 
+const isLocalhost = window.location.hostname === "localhost";
+
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true, 
+  baseURL: isLocalhost
+    ? "http://localhost:5000"
+    : "https://ems-backend-825w.onrender.com", 
+  withCredentials: true,
 });
 
 export default axiosInstance;
