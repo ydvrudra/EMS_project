@@ -20,7 +20,8 @@ useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axiosInstance.get("/api/users/verify", {
-            headers: { "Authorization": `Bearer ${token}` }
+            headers: { "Authorization": `Bearer ${token}` },
+            timeout: 10000 // 10 second timeout
           });
 
           const data = response.data;

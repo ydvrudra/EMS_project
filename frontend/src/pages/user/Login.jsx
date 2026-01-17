@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { showToastError } from "../../utils/showToastError";
+import ResetPassword from "./ResetPassword";
 
 
 const Login = () => {
@@ -61,8 +62,12 @@ const Login = () => {
         }
       }
     } catch (error) {
-      showToastError(error)
-      
+      if (error.response && error.response.status === 400) {
+        toast.error("Invalid email or password. Please check your credentials.");
+      } else {
+        showToastError(error);
+      }
+
     } finally {
       setLoading(false);
     }
@@ -152,6 +157,11 @@ const Login = () => {
           <p className="mt-2 text-center text-sm text-gray-600">
           <Link to="/forgot-password" className="text-blue-600 hover:underline">
             Forgot Password?
+          </Link>
+        </p>
+        <p className="mt-2 text-center text-sm text-gray-600">
+          <Link to="/reset-password" className="text-blue-600 hover:underline">
+            Reset Password?
           </Link>
         </p>
         </div>

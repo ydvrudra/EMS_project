@@ -43,6 +43,7 @@ function App() {
       <Route path='/' element = { <Navigate to='/admin-dashboard'/> }/>
       <Route path='/register' element = {<Register/>}/>
       <Route path='/login' element = {<Login/>}/>
+      <Route path='/reset-password' element = {<ResetPassword/>}/>
 
       {/* admin dashboard route for only admin acess */}
       <Route path='/admin-dashboard'  element = {

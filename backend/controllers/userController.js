@@ -69,3 +69,37 @@ export const LoginUser = async (req, res) => {
 export const verify = (req, res) => {
     res.status(200).json({ success: true, user: req.user });
 }
+
+export const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return handleError(res, new Error("User not found"), 404);
+        }
+        // Generate reset token (simplified, in production use proper token generation)
+        const resetToken = jwt.sign({ _id: user._id }, process.env.JWT_KEY, { expiresIn: '1h' });
+        // Here you would send email with reset link
+        // For now, just return success
+        res.status(200).json({ success: true, message: "Password reset link sent to your email" });
+    } catch (error) {
+        return handleError(res, error);
+    }
+}
+
+export const resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_KEY);
+        const user = await User.findById(decoded._id);
+        if (!user) {
+            return handleError(res, new Error("Invalid token"), 400);
+        }
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        await user.save();
+        res.status(200).json({ success: true, message: "Password reset successfully" });
+    } catch (error) {
+        return handleError(res, error);
+    }
+}
