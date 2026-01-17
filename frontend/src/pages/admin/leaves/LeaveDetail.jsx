@@ -6,6 +6,7 @@ import axiosInstance from "../../../api/axiosInstance";
 
 const LeaveDetail = () => {
 
+    const backendURL = import.meta.env.VITE_API_URL;
     const [leave, setLeave] = useState(null)
 
     const {id} = useParams();
@@ -55,17 +56,17 @@ const LeaveDetail = () => {
             </h2>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-24 rounded shadow-lg shadow-gray-300 border-2 p-2 md:p-10">
                 <div className="">
-                    <img src={`/${leave.employeeId.userId.profileImage}`} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
+                    <img src={leave.employeeId?.userId?.profileImage ? `${backendURL}/uploads/${leave.employeeId.userId.profileImage}` : "/default-avatar.png"} alt="" className="rounded-full border-2 w-40 h-40 md:w-64 md:h-64" />
                 </div>
                 <div className="">
                     <div className="flex items-center space-x-2 mb-3">
                         <p className="text-sm sm:text-lg font-bold">Name:</p>
-                        <p className="text-sm sm:text-lg">{leave.employeeId.userId.name}</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId?.userId?.name || 'N/A'}</p>
                     </div>
 
                      <div className="flex items-center space-x-2 mb-3">
                         <p className="text-sm sm:text-lg font-bold">Emp ID:</p>
-                        <p className="text-sm sm:text-lg">{leave.employeeId.employeeId}</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId?.employeeId || 'N/A'}</p>
                     </div>
 
                      <div className="flex items-center space-x-2 mb-3">
@@ -80,7 +81,7 @@ const LeaveDetail = () => {
 
                      <div className="flex items-center space-x-2 mb-3">
                         <p className="text-sm sm:text-lg font-bold">Department:</p>
-                        <p className="text-sm sm:text-lg">{leave.employeeId.department.dep_name}</p>
+                        <p className="text-sm sm:text-lg">{leave.employeeId?.department?.dep_name || 'N/A'}</p>
                     </div>
 
                      <div className="flex items-center space-x-2 mb-3">

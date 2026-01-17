@@ -99,12 +99,12 @@ function EditEmployee() {
 
                     setEmployee((prev) => ({
                         ...prev,
-                        name:employee.userId.name,
+                        name:employee.userId?.name || '',
                         maritalStatus:employee.maritalStatus,
                         designation:employee.designation,
                         salary:employee.salary,
                         department:employee.department,
-                        profileImage: employee.userId.profileImage, 
+                        profileImage: employee.userId?.profileImage || null,
                     }));
                     console.log("employee getby id", res.data.employee);
 

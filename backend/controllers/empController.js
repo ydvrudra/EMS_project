@@ -74,7 +74,9 @@ export const addEmployee = async (req,res) => {
 export const getEmployees = async (req, res) => {
     try {
         const employees = await Employee.find().populate('userId',{password:0 }).populate('department');
-       return res.status(201).json({ success: true, employees });
+        // Filter out employees where userId is null or user doesn't exist
+        const validEmployees = employees.filter(emp => emp.userId !== null);
+       return res.status(201).json({ success: true, employees: validEmployees });
     } catch (error) {
         handleError(res, error);
     }

@@ -27,13 +27,13 @@ const AllEmpLeavesList = () => {
                     });
                     if (res.data.success) {
                        let sno = 1;
-                       const data = await res.data.leaves.map((lev) => ({                            
+                       const data = await res.data.leaves.map((lev) => ({
                        _id: lev._id,
                        sno: sno++,
-                       employeeId: lev.employeeId.employeeId,
-                       name: lev.employeeId.userId.name,
+                       employeeId: lev.employeeId?.employeeId || 'N/A',
+                       name: lev.employeeId?.userId?.name || 'N/A',
                        leaveType:lev.leaveType,
-                       department:lev.employeeId.department.dep_name,
+                       department:lev.employeeId?.department?.dep_name || 'N/A',
                        days:
                         new Date(lev.endDate).getDate()- new Date(lev.startDate).getDate(),
                        status:lev.status,

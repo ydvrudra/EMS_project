@@ -45,8 +45,8 @@ const EmployeeList = () => {
                          const data = res.data.employees.map((emp, index) => ({
                             _id: emp._id,
                             sno: sno + 1,
-                            dep_name: emp.department.dep_name,
-                            name: emp.userId.name,
+                            dep_name: emp.department?.dep_name || 'N/A',
+                            name: emp.userId?.name || 'N/A',
                             dob: new Date(emp.dob).toLocaleDateString(),
                             profileImage: (
                                 <img
