@@ -43,6 +43,9 @@ export const getLeaveById = async (req, res) => {
 
         else{
              const employee = await Employee.findOne({userId:id})
+             if (!employee) {
+                 return res.status(404).json({ success: false, message: "Employee not found" });
+             }
              leaves= await Leave.find({employeeId:employee._id});
         }
         

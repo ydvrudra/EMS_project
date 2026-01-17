@@ -3,7 +3,9 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 import { handleError } from "../middleware/errorHandler.js";
+import { sendResetEmail, sendAdminResetNotification } from "../utils/emailService.js";
 
 
 
@@ -77,10 +79,18 @@ export const forgotPassword = async (req, res) => {
         if (!user) {
             return handleError(res, new Error("User not found"), 404);
         }
-        // Generate reset token (simplified, in production use proper token generation)
-        const resetToken = jwt.sign({ _id: user._id }, process.env.JWT_KEY, { expiresIn: '1h' });
-        // Here you would send email with reset link
-        // For now, just return success
+
+        // Generate reset token
+        const resetToken = crypto.randomBytes(32).toString('hex');
+        const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
+
+        user.resetToken = resetToken;
+        user.resetTokenExpiry = resetTokenExpiry;
+        await user.save();
+
+        // Send reset email
+        await sendResetEmail(user.email, resetToken);
+
         res.status(200).json({ success: true, message: "Password reset link sent to your email" });
     } catch (error) {
         return handleError(res, error);
@@ -90,15 +100,56 @@ export const forgotPassword = async (req, res) => {
 export const resetPassword = async (req, res) => {
     const { token, newPassword } = req.body;
     try {
-        const decoded = jwt.verify(token, process.env.JWT_KEY);
-        const user = await User.findById(decoded._id);
+        const user = await User.findOne({
+            resetToken: token,
+            resetTokenExpiry: { $gt: Date.now() }
+        });
+
         if (!user) {
-            return handleError(res, new Error("Invalid token"), 400);
+            return handleError(res, new Error("Invalid or expired token"), 400);
         }
+
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
+        user.resetToken = undefined;
+        user.resetTokenExpiry = undefined;
         await user.save();
+
         res.status(200).json({ success: true, message: "Password reset successfully" });
+    } catch (error) {
+        return handleError(res, error);
+    }
+}
+
+export const adminResetPassword = async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        // Check if requester is admin
+        if (req.user.role !== 'admin') {
+            return handleError(res, new Error("Unauthorized"), 403);
+        }
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return handleError(res, new Error("User not found"), 404);
+        }
+
+        // Generate a random password
+        const newPassword = crypto.randomBytes(8).toString('hex');
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        user.password = hashedPassword;
+        await user.save();
+
+        // Send notification email
+        await sendAdminResetNotification(user.email, newPassword);
+
+        res.status(200).json({
+            success: true,
+            message: "Password reset successfully. New password sent to user's email.",
+            newPassword: newPassword // Only for admin reference, don't send in production
+        });
     } catch (error) {
         return handleError(res, error);
     }

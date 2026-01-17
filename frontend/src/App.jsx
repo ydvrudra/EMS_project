@@ -4,7 +4,9 @@ import {  BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-do
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Register from './pages/user/Register';
 import Login from './pages/user/Login';
-import { Toaster } from "react-hot-toast";  
+import ForgotPassword from './pages/user/ForgotPassword';
+import ResetPassword from './pages/user/ResetPassword';
+import { Toaster } from "react-hot-toast";
 
 
 import PrivateRoutes from './utils/PrivateRoutes';
@@ -43,6 +45,7 @@ function App() {
       <Route path='/' element = { <Navigate to='/admin-dashboard'/> }/>
       <Route path='/register' element = {<Register/>}/>
       <Route path='/login' element = {<Login/>}/>
+      <Route path='/forgot-password' element = {<ForgotPassword/>}/>
       <Route path='/reset-password' element = {<ResetPassword/>}/>
 
       {/* admin dashboard route for only admin acess */}
